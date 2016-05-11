@@ -3,4 +3,6 @@ class Contact < ActiveRecord::Base
   has_attached_file :tsv
   has_attached_file :csv
 
+  do_not_validate_attachment_file_type :tsv
+  do_not_validate_attachment_file_type :csv
 end

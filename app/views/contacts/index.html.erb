@@ -2,9 +2,9 @@
 
 <h2>Import New Contacts</h2>
 
-<%= form_for Contact.new do |f| %>
+<%= form_for :contact, :url => { :action => "create" }, :html => { :multipart => true } do |f| %>
   <%= f.file_field :tsv %>
-  <%= f.submit %>
+  <%= f.submit "Upload Contacts" %>
 <% end %>
 
 <table id="contacts">

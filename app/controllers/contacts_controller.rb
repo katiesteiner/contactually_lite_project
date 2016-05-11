@@ -6,7 +6,13 @@ class ContactsController < ApplicationController
   end
 
   def create
-    @contact = Contact.create( params(contact_params) )
+    @contact = Contact.new(contact_params)
+    if @contact.save
+      flash[:success] = "Contacts were uploaded"
+      redirect_to root_path
+    else
+      redirect_to root_path
+    end
   end
 
   def new
@@ -20,6 +26,6 @@ class ContactsController < ApplicationController
   private
 
   def contact_params
-    params.require(:contact).permit(:first_name, :last_name, :email_address, :phone_number, :company_name, :attachment, :tsv, :csv)
+    params.require(:contact).permit(:first_name, :last_name, :email_address, :phone_number, :company_name, :tsv)
   end
 end
