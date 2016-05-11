@@ -45,4 +45,6 @@ group :development, :test do
 
   # Ensure consistent styling
   gem 'rubocop', require: false
+
+  gem 'rspec-rails', '~> 3.0'
 end
