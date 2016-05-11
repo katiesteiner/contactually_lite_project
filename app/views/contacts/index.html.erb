@@ -2,9 +2,9 @@
 
 <h2>Import New Contacts</h2>
 
-<%= form_tag import_contacts_path, multipart: true do %>
-  <%= file_field_tag :file %>
-  <%= submit_tag "Import" %>
+<%= form_for Contact.new do |f| %>
+  <%= f.file_field :tsv %>
+  <%= f.submit %>
 <% end %>
 
 <table id="contacts">

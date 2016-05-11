@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
-  resources :contacts do
-    collection { post :import }
-  end
+  resources :contacts
 
   root to: 'contacts#index'
 end
