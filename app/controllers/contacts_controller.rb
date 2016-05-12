@@ -1,5 +1,3 @@
-require 'csv'
-
 class ContactsController < ApplicationController
   def index
     @contacts = Contact.all
@@ -15,6 +13,11 @@ class ContactsController < ApplicationController
     end
   end
 
+  def import
+    Contact.import(params[:file])
+    redirect_to contacts_path, notice: "Contacts were added."
+  end
+
   def new
     @contact = Contact.new
   end
@@ -26,6 +29,6 @@ class ContactsController < ApplicationController
   private
 
   def contact_params
-    params.require(:contact).permit(:first_name, :last_name, :email_address, :phone_number, :company_name, :tsv)
+    params.require(:contact).permit(:first_name, :last_name, :email_address, :phone_number, :company_name)
   end
 end

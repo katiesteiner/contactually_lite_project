@@ -13,7 +13,22 @@
 
 ActiveRecord::Schema.define(version: 20160511195403) do
 
-# Could not dump table "contacts" because of following NoMethodError
-#   undefined method `[]' for nil:NilClass
+  create_table "contacts", force: :cascade do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "email_address"
+    t.string   "phone_number"
+    t.string   "company_name"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.string   "tsv_file_name"
+    t.string   "tsv_content_type"
+    t.integer  "tsv_file_size"
+    t.datetime "tsv_updated_at"
+    t.string   "csv_file_name"
+    t.string   "csv_content_type"
+    t.integer  "csv_file_size"
+    t.datetime "csv_updated_at"
+  end
 
 end
