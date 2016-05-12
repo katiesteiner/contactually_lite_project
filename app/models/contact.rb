@@ -1,30 +1,44 @@
 class Contact < ActiveRecord::Base
 
-  validates :first_name, presence: true, length: { maximum: 25 }
-  validates :last_name, presence: true, length: { maximum: 25 }
-  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-  validates :email_address, presence: true, length: { maximum: 80 }, format: { with: VALID_EMAIL_REGEX }
-  validates :phone_number, presence: true
-  validates :company_name, presence: true, length: { maximum: 40 }
-
-  require 'csv'
+require 'csv'
+#require 'phony'
 
   def self.import(file)
-    data = CSV.table(file.path, headers: false, col_sep: ' ') 
-    data[1..-1].each do |row|
-      contact = Contact.new(
+
+    file = File.open(file.path, "r")
+
+    index = 0
+
+    file.each_line do |line|
+      if index > 0
+        row = CSV.parse_line(line, col_sep: "\t")
+        contact = Contact.new(
           first_name: row[0],
           last_name: row[1],
           email_address: row[2],
-          phone_number: row[3],
+          phone_number: self.normalize_phone_number(row[3]),
           company_name: row[4]
         )
-      contact.save!
+        contact.save!
       end
+      index = index + 1
     end
+  end
 
-    def normalize_phone_number(number)
-      
+  def self.normalize_phone_number(number)
+    number.gsub!(")", "-")
+    number.gsub!("(", "")
+    number.gsub!(".", "-")
+    if number[0] + number[1] == "1-"
+        number[0] = ""
+        number[0] = ""
     end
+    number
+  end
+
+  # def phone_normalized
+  #   if phone_number
+  #   Phony.format(phone_number, format: :local)
+  # end
 
 end
