@@ -1,7 +1,6 @@
 class Contact < ActiveRecord::Base
 
 require 'csv'
-#require 'phony'
 
   def self.import(file)
 
@@ -36,9 +35,5 @@ require 'csv'
     number
   end
 
-  # def phone_normalized
-  #   if phone_number
-  #   Phony.format(phone_number, format: :local)
-  # end
 
 end
