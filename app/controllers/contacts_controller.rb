@@ -26,6 +26,20 @@ class ContactsController < ApplicationController
     @contact = Contact.find(params[:id])
   end
 
+  def destroy
+    @contact = Contact.find(params[:id])
+    if @contact.destroy
+      flash[:notice] = "Contact was deleted"
+    else
+      flash[:error] = "Contact couldn't be deleted. Please try again."
+    end
+
+    respond_to do |format|
+      format.html
+      format.js
+    end
+  end
+  
   private
 
   def contact_params

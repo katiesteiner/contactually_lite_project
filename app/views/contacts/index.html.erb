@@ -22,6 +22,7 @@
     <td><%= contact.email_address %></td>
     <td><%= contact.phone_number %></td>
     <td><%= contact.company_name %></td>
+    <td><%= link_to "Delete", contact, method: :delete, remote: true, class: 'delete_contact' %></td>
   </tr>
 <% end %>
 </table>
