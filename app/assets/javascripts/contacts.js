@@ -26,6 +26,17 @@ var extensionCheck = function(){
   });
 };
 
+var comCheck = function(){
+  var comEmail = $("#contacts .email");
+  $.each(comEmail, function(index, comEmail) {
+    if ($(comEmail).text().includes("com")) {
+      $(comEmail).parent('tr').fadeIn();
+    } else {
+      $(comEmail).parent('tr').fadeOut();
+    }
+  });
+};
+
 $(document).ready(function(){
   $(".all").click(function(){
     showAll();
@@ -36,6 +47,10 @@ $(document).ready(function(){
   });
   $(".extensions").click(function(){
     extensionCheck();
+    $(this).toggleClass("active_button");
+  });
+  $(".com").click(function(){
+    comCheck();
     $(this).toggleClass("active_button");
   });
 });
