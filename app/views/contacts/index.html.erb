@@ -7,6 +7,12 @@
   <%= submit_tag "Upload Contacts" %>
 <% end %>
 
+<div class="buttons">
+  <button class="all btn btn-succes">Show All</button>
+  <button class="international btn btn-success">Only International Numbers</button>
+</div>
+
+
 <table id="contacts">
   <tr>
     <th>First Name</th>
@@ -17,11 +23,11 @@
   </tr>
 <% @contacts.each do |contact| %>
   <tr id="contact-<%= contact.id %>">
-    <td><%= contact.first_name %></td>
-    <td><%= contact.last_name %></td>
-    <td><%= contact.email_address %></td>
-    <td><%= contact.phone_number %></td>
-    <td><%= contact.company_name %></td>
+    <td class="firstName"><%= contact.first_name %></td>
+    <td class="lastName"><%= contact.last_name %></td>
+    <td class="email"><%= contact.email_address %></td>
+    <td class="phone"><%= contact.phone_number %></td>
+    <td class="companyName"><%= contact.company_name %></td>
     <td><%= link_to "Delete", contact, method: :delete, remote: true, class: 'delete_contact' %></td>
   </tr>
 <% end %>
