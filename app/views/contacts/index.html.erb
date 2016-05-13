@@ -16,7 +16,7 @@
     <th>Company Name</th>
   </tr>
 <% @contacts.each do |contact| %>
-  <tr>
+  <tr id="contact-<%= contact.id %>">
     <td><%= contact.first_name %></td>
     <td><%= contact.last_name %></td>
     <td><%= contact.email_address %></td>
