@@ -30,10 +30,10 @@
       </table>
     </div>
     <div id="import-contacts">
-      <h3>Import New Contacts</h3>
+      <h5 class="import-title">Import New Contacts</h5>
         <%= form_tag import_contacts_path, multipart: true do %>
           <%= file_field_tag :file, id: "file-field" %>
-          <%= submit_tag "Upload Contacts", class: "btn btn-primary" %>
+          <%= submit_tag "Upload Contacts", class: "upload btn btn-primary" %>
         <% end %>
     </div>
   </div>

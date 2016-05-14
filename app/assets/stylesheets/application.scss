@@ -44,23 +44,40 @@ body {
 /* BUTTON STYLING */
 
 .buttons {
-  width: 90%;
+  width: 70%;
   margin: 1.5rem auto;
   border-collapse: collapse;
+}
+
+.all {
+  background-color: #41525F;
+  border-color: #41525F;
+}
+
+.international, .extensions, .com, .alpha, .upload {
+  background-color: #F17461;
+  border-color: #F17461;
+}
+
+button:focus {
+  background-color: blue;
 }
 
 /* FILE UPLOAD STYLING */
 
-.import-contacts {
-  width: 90%;
+#import-contacts {
+  width: 35%;
   margin: 1.5rem auto;
   border-collapse: collapse;
-  text-align: inline;
+  background-color: rgba(255, 255, 255, 0.9);
+  min-height: 65px;
+  text-align: center;
 }
 
-#file-field {
-  text-align: inline;
+#file-field, .import-title {
+  display: inline;
 }
+
 
 /* LOGO STYLING */
 
