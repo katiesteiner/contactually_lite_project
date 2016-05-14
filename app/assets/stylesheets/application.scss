@@ -1,0 +1,81 @@
+@import "bootstrap";
+
+body {
+  font-family: Lato;
+}
+
+h1 {
+  text-align: center;
+}
+/* BACKGROUND STYLES */
+
+body {
+  background: image-url('background.jpeg') no-repeat center center;
+  background-attachment: fixed;
+  padding: 0;
+  -webkit-background-size: cover;
+  background-size: cover;
+  -moz-background-size: cover;
+}
+
+
+/* CONTACT TABLE STYLES */
+
+#contact-table {
+  width: 90%;
+  margin: 1.5rem auto;
+  border-collapse: collapse;
+  background-color: rgba(255, 255, 255, 0.9);
+  min-height: 100px;
+}
+
+.firstName, .lastName, .delete {
+  width: 10%;
+}
+
+.phone, .companyName {
+  width: 20%;
+}
+
+.email {
+  width: 30%;
+}
+
+/* BUTTON STYLING */
+
+.buttons {
+  width: 90%;
+  margin: 1.5rem auto;
+  border-collapse: collapse;
+}
+
+/* FILE UPLOAD STYLING */
+
+.import-contacts {
+  width: 90%;
+  margin: 1.5rem auto;
+  border-collapse: collapse;
+  text-align: inline;
+}
+
+#file-field {
+  text-align: inline;
+}
+
+/* LOGO STYLING */
+
+h1.logo {
+  text-decoration:none;
+  border:0;
+  width : 700px;
+  height : 120px;
+  margin : 0;
+  padding : 0;
+  background : image-url('large_contactually-logo.png') no-repeat 0 0;
+}
+
+h1.logo a {
+  display : block;
+  height : 113px;
+  text-indent : -9999px; 
+}

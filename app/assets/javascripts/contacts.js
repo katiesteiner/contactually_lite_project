@@ -1,7 +1,7 @@
 var showAll = function(){
   $(".firstName").each(function(){
     $(this).parent().fadeIn();
-  })
+  });
 };
 
 var internationalCheck = function(){
@@ -37,6 +37,7 @@ var comCheck = function(){
   });
 };
 
+
 $(document).ready(function(){
   $(".all").click(function(){
     showAll();
@@ -53,4 +54,20 @@ $(document).ready(function(){
     comCheck();
     $(this).toggleClass("active_button");
   });
+  $('.alpha').click(function(e) {
+    var $sort = this;
+    var $table = $('#contacts .email');
+    var $tableTr = $('tr #"contact-<%= contact.id %>"',$table);
+      $tableTr.sort(function(a, b){
+        var keyA = $(a).text();
+        var keyB = $(b).text();
+        if($($sort).hasClass('alpha')){
+          return (keyA > keyB) ? 1 : 0;
+        } 
+      });
+      $.each($tableTr, function(index, row){
+        $table.append(row);
+      });
+     e.preventDefault();
+   });
 });

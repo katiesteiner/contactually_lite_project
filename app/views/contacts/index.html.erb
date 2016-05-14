@@ -1,37 +1,40 @@
-<h1>Contact List</h1>
+<div id="home">
+  <div class="overlay">
+    <div class="buttons">
+      <button class="all btn btn-primary">Show All</button>
+      <button class="international btn btn-success">Only International Numbers</button>
+      <button class="extensions btn btn-success">Only Phone Numbers with Extensions</button>
+      <button class="com btn btn-success">Only Email with .com</button>
+      <button class="alpha btn btn-success">Email Alphabetically</button>
+    </div>
 
-<h2>Import New Contacts</h2>
-
-<%= form_tag import_contacts_path, multipart: true do %>
-  <%= file_field_tag :file, id: "file-field" %>
-  <%= submit_tag "Upload Contacts" %>
-<% end %>
-
-<div class="buttons">
-  <button class="all btn btn-succes">Show All</button>
-  <button class="international btn btn-success">Only International Numbers</button>
-  <button class="extensions btn btn-success">Only Phone Numbers with Extensions</button>
-  <button class="com btn btn-success">Only Email with .com</button>
+    <div id="contact-table">
+      <table id="contacts">
+        <tr>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Email Address</th>
+          <th>Phone Number</th>
+          <th>Company Name</th>
+        </tr>
+        <% @contacts.each do |contact| %>
+          <tr id="contact-<%= contact.id %>">
+            <td class="firstName"><%= contact.first_name %></td>
+            <td class="lastName"><%= contact.last_name %></td>
+            <td class="email"><%= contact.email_address %></td>
+            <td class="phone"><%= contact.phone_number %></td>
+            <td class="companyName"><%= contact.company_name %></td>
+            <td class="delete"><%= link_to "Delete", contact, method: :delete, remote: true, class: 'delete_contact' %></td>
+          </tr>
+        <% end %>
+      </table>
+    </div>
+    <div id="import-contacts">
+      <h3>Import New Contacts</h3>
+        <%= form_tag import_contacts_path, multipart: true do %>
+          <%= file_field_tag :file, id: "file-field" %>
+          <%= submit_tag "Upload Contacts", class: "btn btn-primary" %>
+        <% end %>
+    </div>
+  </div>
 </div>
-
-
-<table id="contacts">
-  <tr>
-    <th>First Name</th>
-    <th>Last Name</th>
-    <th>Email Address</th>
-    <th>Phone Number</th>
-    <th>Company Name</th>
-  </tr>
-<% @contacts.each do |contact| %>
-  <tr id="contact-<%= contact.id %>">
-    <td class="firstName"><%= contact.first_name %></td>
-    <td class="lastName"><%= contact.last_name %></td>
-    <td class="email"><%= contact.email_address %></td>
-    <td class="phone"><%= contact.phone_number %></td>
-    <td class="companyName"><%= contact.company_name %></td>
-    <td><%= link_to "Delete", contact, method: :delete, remote: true, class: 'delete_contact' %></td>
-  </tr>
-<% end %>
-</table>
-
