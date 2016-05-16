@@ -16,17 +16,17 @@ class Contact < ActiveRecord::Base
         )
         contact.save!
       end
-      index = index + 1
+      index += 1
     end
   end
 
   def self.normalize_phone_number(number)
-    number.gsub!(")", "-")
-    number.gsub!("(", "")
-    number.gsub!(".", "-")
-    if number[0] + number[1] == "1-"
-        number[0] = ""
-        number[0] = ""
+    number.tr!(')', '-')
+    number.tr!('(', '')
+    number.tr!('.', '-')
+    if number[0] + number[1] == '1-'
+      number[0] = ''
+      number[0] = ''
     end
     number
   end

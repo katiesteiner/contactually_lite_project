@@ -1,10 +1,8 @@
 require 'rails_helper'
+require 'spec_helper'
 
 describe Contact do
-  describe "import file" do
-    it "imports the file" do
-      expect(Contact).to receive(:import).with("foo.txt")
-      post :import, file: "foo.txt"
-    end
+  it 'has a valid factory' do
+    expect(create(:contact)).to be_valid
   end
 end

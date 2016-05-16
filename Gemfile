@@ -29,6 +29,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'roo'
 
 gem 'bootstrap-sass'
+
+gem 'faker'
 # Use Unicorn as the app server
 # gem 'unicorn'
 
@@ -52,4 +54,10 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.0'
 
   gem 'pry-rails'
+
+  gem 'factory_girl_rails'
+end
+
+group :test do
+  gem 'factory_girl_rails'
 end
