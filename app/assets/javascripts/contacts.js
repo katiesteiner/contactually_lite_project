@@ -37,6 +37,30 @@ var comCheck = function(){
   });
 };
 
+var alphaCheck = function() {
+  var $table = $('#contacts');
+  var $tableBody = $table.find('tbody');
+  var rows, sortedRows;
+  function sortRows(a, b){
+    if ( $(a).find('td:nth-child(3)').text() > $(b).find('td:nth-child(3)').text() ) {
+      return 1;
+    }
+    if ( $(a).find('td:nth-child(3)').text() < $(b).find('td:nth-child(3)').text() ) {
+      return -1;
+    }
+      return 0;
+    }
+    //get the rows from the table
+  rows = $tableBody.find('tr');
+
+    //sort the rows as "sortedrows"
+  sortedRows = rows.sort(sortRows);
+
+    //replace the old rows with the new rows
+  $tableBody.remove('tr');
+  $tableBody.append(sortedRows);      
+};
+
 
 $(document).ready(function(){
   $(".all").click(function(){
@@ -54,21 +78,9 @@ $(document).ready(function(){
     comCheck();
     $(this).toggleClass("active_button");
   });
-  $('.alpha').click(function(e) {
-    var $sort = this;
-    var $table = $('#contacts .email');
-    var $tableTr = $('tr #"contact-<%= contact.id %>"',$table);
-      $tableTr.sort(function(a, b){
-        var keyA = $(a).text();
-        var keyB = $(b).text();
-        if($($sort).hasClass('alpha')){
-          return (keyA > keyB) ? 1 : 0;
-        } 
-      });
-      $.each($tableTr, function(index, row){
-        $table.append(row);
-      });
-     e.preventDefault();
-   });
+  $(".alpha").click(function(){
+    alphaCheck();
+    $(this).toggleClass("active_button");
+  });
 });
 

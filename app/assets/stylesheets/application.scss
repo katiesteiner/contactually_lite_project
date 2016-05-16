@@ -29,16 +29,19 @@ body {
   min-height: 100px;
 }
 
-.firstName, .lastName, .delete {
+.firstName, .lastName {
   width: 10%;
 }
 
+.delete {
+  width: 5%;
+}
 .phone, .companyName {
-  width: 20%;
+  width: 22%;
 }
 
 .email {
-  width: 30%;
+  width: 28%;
 }
 
 /* BUTTON STYLING */

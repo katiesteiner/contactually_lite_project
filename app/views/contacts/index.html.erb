@@ -10,13 +10,14 @@
 
     <div id="contact-table">
       <table id="contacts">
-        <tr>
+        <thead>
           <th>First Name</th>
           <th>Last Name</th>
           <th>Email Address</th>
           <th>Phone Number</th>
           <th>Company Name</th>
-        </tr>
+        </thead>
+        <tbody>
         <% @contacts.each do |contact| %>
           <tr id="contact-<%= contact.id %>">
             <td class="firstName"><%= contact.first_name %></td>
@@ -27,6 +28,7 @@
             <td class="delete"><%= link_to "Delete", contact, method: :delete, remote: true, class: 'delete_contact' %></td>
           </tr>
         <% end %>
+      </tbody>
       </table>
     </div>
     <div id="import-contacts">
