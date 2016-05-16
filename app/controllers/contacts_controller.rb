@@ -6,7 +6,7 @@ class ContactsController < ApplicationController
   def create
     @contact = Contact.new(contact_params)
     if @contact.save
-      flash[:success] = "Contacts were uploaded"
+      flash[:success] = 'Contacts were uploaded'
       redirect_to root_path
     else
       redirect_to root_path
@@ -15,7 +15,7 @@ class ContactsController < ApplicationController
 
   def import
     Contact.import(params[:file])
-    redirect_to contacts_path, notice: "Contacts were added."
+    redirect_to contacts_path, notice: 'Contacts were added.'
   end
 
   def new
@@ -29,9 +29,9 @@ class ContactsController < ApplicationController
   def destroy
     @contact = Contact.find(params[:id])
     if @contact.destroy
-      flash[:notice] = "Contact was deleted"
+      flash[:notice] = 'Contact was deleted'
     else
-      flash[:error] = "Contact couldn't be deleted. Please try again."
+      flash[:error] = 'Contact could not be deleted. Please try again.'
     end
 
     respond_to do |format|
@@ -39,7 +39,7 @@ class ContactsController < ApplicationController
       format.js
     end
   end
-  
+
   private
 
   def contact_params

@@ -1,13 +1,9 @@
 class Contact < ActiveRecord::Base
-
-require 'csv'
+  require 'csv'
 
   def self.import(file)
-
-    file = File.open(file.path, "r")
-
+    file = File.open(file.path, 'r')
     index = 0
-
     file.each_line do |line|
       if index > 0
         row = CSV.parse_line(line, col_sep: "\t")
@@ -34,6 +30,4 @@ require 'csv'
     end
     number
   end
-
-
 end
